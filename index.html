@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Syeda Islwyn · Generative AI for Work & Research</title>
+  <meta name="description" content="Portfolio site for Syeda Islwyn's Generative AI for Work & Research course: about me, course info, and weekly submissions." />
+  <style>
+    :root {
+      --bg: #0f172a;         /* slate-900 */
+      --card: #111827;       /* gray-900 */
+      --ink: #e5e7eb;        /* gray-200 */
+      --muted: #9ca3af;      /* gray-400 */
+      --brand: #38bdf8;      /* sky-400 */
+      --accent: #a78bfa;     /* violet-400 */
+      --ring: rgba(56, 189, 248, .35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(56,189,248,.08), transparent 60%),
+                  radial-gradient(1000px 700px at -10% 10%, rgba(167,139,250,.08), transparent 60%),
+                  var(--bg);
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: linear-gradient(180deg, rgba(15,23,42,.9), rgba(15,23,42,.7));
+      backdrop-filter: saturate(160%) blur(8px);
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .nav {
+      max-width: 1100px; margin: 0 auto; padding: .75rem 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .brand { font-weight: 700; letter-spacing: .3px; }
+    .spacer { flex: 1; }
+    .nav a { color: var(--ink); opacity: .9; padding: .4rem .6rem; border-radius: .5rem; }
+    .nav a:hover { background: rgba(148,163,184,.12); text-decoration: none; }
+    .btn { display: inline-block; background: linear-gradient(90deg, var(--brand), var(--accent)); color: #0b1020; font-weight: 700; border-radius: .75rem; padding: .6rem .95rem; box-shadow: 0 6px 20px rgba(56,189,248,.25); border: none; cursor: pointer; }
+    .btn:hover { filter: brightness(1.05); }
+
+    /* Sections */
+    section { max-width: 1100px; margin: 0 auto; padding: 4rem 1rem; }
+    .grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 900px){ .grid-2 { grid-template-columns: 1.1fr 1fr; } }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid rgba(148,163,184,.18);
+      border-radius: 1rem; padding: 1.25rem; box-shadow: 0 10px 30px rgba(2,8,23,.25);
+    }
+    .tag { display:inline-block; padding:.2rem .5rem; border:1px solid rgba(148,163,184,.35); border-radius:.5rem; color:var(--muted); font-size:.85rem; }
+    h1,h2,h3 { line-height: 1.2; margin: 0 0 .75rem; }
+    h1 { font-size: clamp(1.8rem, 2.3vw + 1.2rem, 3rem); }
+    h2 { font-size: clamp(1.4rem, 1.4vw + 1rem, 2rem); margin-top: 1rem; }
+    p { margin: .25rem 0 .85rem; }
+    ul { margin: .2rem 0 .8rem 1.1rem; }
+    .muted { color: var(--muted); }
+
+    /* Hero */
+    .hero { padding: 3.5rem 1rem 2.5rem; }
+    .hero .lead { font-size: clamp(1rem, .6vw + .9rem, 1.2rem); color: var(--muted); }
+    .hero-wrap { display:grid; gap:1.2rem; align-items:center; max-width:1100px; margin:0 auto; }
+    @media (min-width: 900px){ .hero-wrap { grid-template-columns: 1.2fr .9fr; } }
+    .avatar { width: 112px; height: 112px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display: grid; place-items: center; font-weight: 800; color:#0b1020; border: 3px solid rgba(255,255,255,.2); box-shadow: 0 12px 30px rgba(56,189,248,.25); }
+
+    /* Timeline / list */
+    .list { display: grid; gap: .8rem; }
+    .list-item { display: grid; gap:.25rem; padding:.8rem 1rem; border:1px dashed rgba(148,163,184,.25); border-radius:.75rem; }
+
+    /* Modules */
+    details { border: 1px solid rgba(148,163,184,.25); border-radius: .75rem; padding: .9rem 1rem; background: rgba(255,255,255,.02); }
+    summary { cursor: pointer; font-weight: 700; }
+    details + details { margin-top: .75rem; }
+
+    /* Footer */
+    footer { padding: 2.5rem 1rem 4rem; color: var(--muted); text-align: center; }
+    .tiny { font-size: .9rem; }
+
+    /* Focus styles */
+    :focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; border-radius: .5rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">Syeda Islwyn • GAIR</div>
+      <div class="spacer"></div>
+      <a href="#about-me">About me</a>
+      <a href="#about-course">About the course</a>
+      <a href="#weekly">Weekly submissions</a>
+      <a class="btn" href="#weekly">View Portfolio</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-wrap">
+      <div>
+        <span class="tag">Generative AI for Work & Research</span>
+        <h1>Building practical AI workflows for research, analysis & communication</h1>
+        <p class="lead">I’m <strong>Syeda Islwyn</strong>, a researcher trained in Biology & Sociology who loves translating evidence into action. This one‑page portfolio documents my journey through an 8‑week hands‑on course where I prototype AI‑powered workflows for documents, data, literature reviews, and automation.</p>
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.7rem;">
+          <a class="btn" href="#about-course" aria-label="Jump to course details">Course details</a>
+          <a class="btn" href="#weekly" aria-label="Jump to weekly submissions" style="background:linear-gradient(90deg, var(--accent), var(--brand));">See weekly work</a>
+        </div>
+      </div>
+      <div class="card" aria-label="Profile quick facts">
+        <div style="display:flex; align-items:center; gap:1rem;">
+          <div class="avatar" aria-hidden="true">SI</div>
+          <div>
+            <h3 style="margin:0;">Syeda Islwyn</h3>
+            <div class="muted">Research • Biology • Sociology</div>
+          </div>
+        </div>
+        <hr style="border:none; border-top:1px solid rgba(148,163,184,.2); margin:1rem 0;" />
+        <ul>
+          <li><strong>Education:</strong> B.S. Biology & B.A. Sociology, Duke University (Dean’s List)</li>
+          <li><strong>Research focus:</strong> innate immunity; protein localization & antiviral signaling</li>
+          <li><strong>Lab toolkit:</strong> Cell culture, PCR/qRT‑PCR, Western/Northern blot, confocal & fluorescent microscopy, siRNA/Plasmid transfection, virology assays</li>
+          <li><strong>Analysis tools:</strong> STATA, GraphPad Prism, FIJI/ImageJ, Microsoft Office; basic design in Photoshop/Illustrator</li>
+          <li><strong>Languages:</strong> English & Spanish (fluent)</li>
+        </ul>
+        <p class="tiny muted">Based in Durham, NC. For contact, please use your preferred channel (email intentionally omitted).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about-me" class="grid grid-2">
+    <div>
+      <h2>About me</h2>
+      <p>I’m a curious, impact‑oriented scientist who enjoys turning messy questions into structured experiments and clear stories. At Duke University Medical Center, I contributed to a project investigating how the localization of a central innate immune adaptor (Protein Y) affects antiviral responses—optimizing protocols across qRT‑PCR, luciferase assays, microscopy, and more. I compiled findings in STATA and shared updates in lab meetings and journal clubs.</p>
+      <p>Outside the lab, I serve my community through teaching and language support—from SAT tutoring to volunteering with GANO to help Spanish‑speaking families build English proficiency. These experiences shaped my interest in accessible science and public‑facing communication.</p>
+      <div class="card">
+        <strong>Highlights</strong>
+        <ul>
+          <li>Independent Study Grant (Duke Undergraduate Research Support Office)</li>
+          <li>National Merit Scholar</li>
+          <li>75+ hours of clinical shadowing across surgery and patient care</li>
+          <li>Community fundraising and outreach in Boston</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <strong>Interests at the intersection of AI × Science</strong>
+        <ul class="list">
+          <li class="list-item"><div><strong>Literature synthesis</strong></div><div class="muted">Structuring reviews, extracting evidence, summarizing reliably.</div></li>
+          <li class="list-item"><div><strong>Data & visualization</strong></div><div class="muted">Automating cleaning, analysis and charting for faster insight cycles.</div></li>
+          <li class="list-item"><div><strong>Reproducible reporting</strong></div><div class="muted">From notes → figures → polished documents with minimal copy‑paste.</div></li>
+          <li class="list-item"><div><strong>Communication</strong></div><div class="muted">Translating complex methods into clear, audience‑appropriate outputs.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about-course">
+    <h2>About the course</h2>
+    <p><em>Generative AI for Work & Research</em> is an 8‑week, live, online program focused on building end‑to‑end AI workflows—no coding experience required. Over weekly workshops and help sessions, learners automate document and data tasks, organize knowledge, build custom chatbots, and design portfolio‑ready projects.</p>
+
+    <div class="grid grid-2" style="margin-top:1rem; align-items:start;">
+      <div class="card">
+        <strong>Quick facts</strong>
+        <ul>
+          <li><strong>Duration:</strong> 8 weeks</li>
+          <li><strong>Next start dates:</strong> Aug 17 & Aug 20, 2025</li>
+          <li><strong>Location:</strong> Online classroom</li>
+          <li><strong>Workshops (2 hrs):</strong> Wednesdays 3pm GMT or Sundays 5pm GMT</li>
+          <li><strong>Tuition:</strong> $250 / month × 2 (refund within first month)</li>
+          <li><strong>Financial aid:</strong> Hardship scholarships available</li>
+        </ul>
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.6rem;">
+          <a class="btn" href="#weekly">Enroll (portfolio link)</a>
+          <a class="btn" href="#modules">View modules</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <strong>What we build</strong>
+        <ul>
+          <li>Automations for documents, spreadsheets, and data</li>
+          <li>Knowledge organization & literature review pipelines</li>
+          <li>Custom GPTs & chatbots for research support</li>
+          <li>Professional visuals & presentations generated with AI</li>
+          <li>Capstone project presented to peers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="modules" style="margin-top:1rem;">
+      <h3>Course modules</h3>
+      <details open>
+        <summary>Documents, Presentations & Websites</summary>
+        <p><strong>Applications:</strong> Content creation, documentation, web development</p>
+        <p><strong>Topics:</strong> LLM fundamentals, content generation, no‑code websites, Markdown documents, AI presentations</p>
+      </details>
+      <details>
+        <summary>Automated Data Analysis</summary>
+        <p><strong>Applications:</strong> Data cleaning, visualization, reporting, decision support</p>
+        <p><strong>Topics:</strong> ChatGPT Code Interpreter, TheBricks dashboards, Julius, Windsurf, data visualization</p>
+      </details>
+      <details>
+        <summary>GenAI for Research & Text Analysis</summary>
+        <p><strong>Applications:</strong> Literature review, knowledge synthesis, text analysis</p>
+        <p><strong>Topics:</strong> Elicit, LiteRev, text summarization/classification, sentiment analysis, knowledge extraction</p>
+      </details>
+      <details>
+        <summary>Custom GPTs and Chatbots</summary>
+        <p><strong>Applications:</strong> Customer service, knowledge management</p>
+        <p><strong>Topics:</strong> RAG systems, Custom GPT Builder, Botpress workflows, API integration</p>
+      </details>
+      <details>
+        <summary>AI Tools for Workflow Automation</summary>
+        <p><strong>Applications:</strong> Workflow automation, email/admin tasks</p>
+        <p><strong>Topics:</strong> Lindy automations, Make.com workflows, Google Sheets, Gmail API, task orchestration</p>
+      </details>
+      <details>
+        <summary>GenAI for Communication & Outreach</summary>
+        <p><strong>Applications:</strong> Outreach, digital marketing, brand assets</p>
+        <p><strong>Topics:</strong> SVG/HTML/pixel image generation, AI video</p>
+      </details>
+      <details>
+        <summary>Capstone Project & Showcase</summary>
+        <p><strong>Applications:</strong> Portfolio development, solution design</p>
+        <p><strong>Topics:</strong> Project scoping, workflow design, tool integration, presentations & feedback</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="weekly">
+    <h2>My weekly submissions</h2>
+    <p class="muted">Links will be added as each piece is published.</p>
+    <ol class="list" style="counter-reset:item;">
+      <li class="list-item"><strong>Week 1 — Foundations & Prompting</strong><br><span class="muted">Content generation primer and a micro‑site draft</span><br><a href="#">Add link</a></li>
+      <li class="list-item"><strong>Week 2 — Documents to Websites</strong><br><span class="muted">Markdown → polished HTML workflow</span><br><a href="#">Add link</a></li>
+      <li class="list-item"><strong>Week 3 — Automated Data Analysis</strong><br><span class="muted">Dataset exploration with code‑interpreter</span><br><a href="#">Add link</a></li>
+      <li class="list-item"><strong>Week 4 — Literature Review Pipeline</strong><br><span class="muted">Elicit/LiteRev synthesis</span><br><a href="#">Add link</a></li>
+      <li class="list-item"><strong>Week 5 — Custom GPT / RAG</strong><br><span class="muted">Domain‑specific assistant</span><br><a href="#">Add link</a></li>
+      <li class="list-item"><strong>Week 6 — Workflow Automation</strong><br><span class="muted">Make.com orchestration</span><br><a href="#">Add link</a></li>
+      <li class="list-item"><strong>Week 7 — Communication & Outreach</strong><br><span class="muted">Visual assets & micro‑campaign</span><br><a href="#">Add link</a></li>
+      <li class="list-item"><strong>Week 8 — Capstone & Showcase</strong><br><span class="muted">End‑to‑end AI solution</span><br><a href="#">Add link</a></li>
+    </ol>
+  </section>
+
+  <footer>
+    <div class="tiny">© <span id="y"></span> Syeda Islwyn • Portfolio for the Generative AI for Work & Research course. Email intentionally omitted to reduce spam.</div>
+  </footer>
+
+  <script>
+    // Set year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
